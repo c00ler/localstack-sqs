@@ -48,8 +48,8 @@ public class LocalstackSQSIT {
 
         assertThat(messageId).isNotBlank();
 
-        final ReceiveMessageResult receiveMessageResult = asyncClient
-                .receiveMessage(new ReceiveMessageRequest().withQueueUrl(queueUrl).withMaxNumberOfMessages(10));
+        final ReceiveMessageResult receiveMessageResult = asyncClient.receiveMessage(
+                new ReceiveMessageRequest().withQueueUrl(queueUrl).withMaxNumberOfMessages(10).withWaitTimeSeconds(1));
 
         assertThat(receiveMessageResult.getMessages()).hasSize(1);
         assertThat(receiveMessageResult.getMessages().get(0))
