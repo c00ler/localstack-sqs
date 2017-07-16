@@ -1,8 +1,0 @@
-version: '2'
-services:
-  localstack:
-    image: "atlassianlabs/localstack:0.3.10"
-    environment:
-      - SERVICES=sqs
-    ports:
-      - "4576:4576"
