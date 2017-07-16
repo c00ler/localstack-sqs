@@ -1,5 +1,6 @@
-# SQS mock example
-Mock SQS with [localstack](https://github.com/localstack/localstack).
+# Localstack SQS tests
+
+Test spring-cloud-aws SqsListener with [localstack](https://github.com/localstack/localstack).
 
 # Requirements
 - Java 8
