@@ -1,10 +1,9 @@
 # SQS mock example
-Mock SQS with [localstack](https://bitbucket.org/atlassian/localstack).
+Mock SQS with [localstack](https://github.com/localstack/localstack).
 
 # Requirements
-- java 8
-- docker
-- docker-compose
+- Java 8
+- Docker
 
 # Run integration tests
 ```
