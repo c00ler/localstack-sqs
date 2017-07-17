@@ -2,7 +2,6 @@ package com.github.avenderov.support;
 
 import com.amazonaws.regions.Regions;
 import com.github.avenderov.Launcher;
-import org.junit.ClassRule;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.util.EnvironmentTestUtils;
@@ -27,14 +26,17 @@ public abstract class AbstractIntegrationTest {
 
     private static final String REGION = Regions.EU_CENTRAL_1.getName();
 
-    @ClassRule
-    public static GenericContainer localstack =
+    private static GenericContainer localstack =
             new GenericContainer("atlassianlabs/localstack:0.6.0")
                     .withEnv("SERVICES", "sqs")
                     .withEnv("DEFAULT_REGION", REGION)
                     .withExposedPorts(LOCALSTACK_SQS_PORT)
                     .waitingFor((new LogMessageWaitStrategy()
                             .withRegEx(".*Ready\\.\n").withStartupTimeout(Duration.ofSeconds(10L))));
+
+    static {
+        localstack.start();
+    }
 
     public static class Initializer implements ApplicationContextInitializer<ConfigurableApplicationContext> {
 
